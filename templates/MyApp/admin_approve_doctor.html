@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Admin · Approve Patient</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-left: 20%;
+            margin-top: 8%;
+        }
+
+        .panel-heading {
+            background-color: #428bca;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px 5px 0 0;
+            text-align: center;
+        }
+
+        .panel-title {
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 18px;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .btn-xs {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        .btn-approve {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+        .btn-reject {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .btn-xs:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    {% include 'MyApp/admin_base.html' %}
+
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h6 class="panel-title" style="margin-bottom: 0;">Doctors To Be Approved</h6>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
+                        <th>Approve</th>
+                        <th>Reject</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in doctors %}
+                    <tr>
+                        <td>{{ d.Doctor_First_Name }} {{ d.Doctor_Last_Name }}</td>
+                        <td>{{ d.contact }}</td>
+                        <td>{{ d.address }}</td>
+                        <td><a class="btn btn-primary btn-xs btn-approve" href="{% url 'MyApp:approve_doctor' d.id  %}"><span class="glyphicon glyphicon-ok"></span></a></td>
+                        <td><a class="btn btn-danger btn-xs btn-reject" href="{% url 'MyApp:reject_doctor' d.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

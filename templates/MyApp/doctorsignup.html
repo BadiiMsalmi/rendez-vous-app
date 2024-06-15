@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/signupform.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Doctor Signup · Ask A Doctor</title>
+    <style>
+        body {
+            background-image: url("https://img.freepik.com/free-photo/cup-coffee-near-spectacles-clipboard-with-doctor-s-accessories-background_23-2148214013.jpg?size=626&ext=jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 50px;
+        }
+        .signup-form h1 {
+            margin-bottom: 20px;
+        }
+        .signup-form a {
+            color: #007bff;
+        }
+        .signup-form a:hover {
+            text-decoration: underline;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-form">
+            <h1>Doctor Sign-up</h1>
+            <h4>Already a User? <a href="{% url 'MyApp:doctorlogin' %}">Login Here!</a></h4>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ user_form.username|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ user_form.password|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ doctor_form.Doctor_First_Name|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ doctor_form.Doctor_Last_Name|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ doctor_form.gender|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ doctor_form.department|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ doctor_form.contact|as_crispy_field }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        {{ doctor_form.address|as_crispy_field }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

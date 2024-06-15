@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+{% include 'MyApp/web_head.html' %}
+{% include "MyApp/navbar.html" %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Account Approval Pending</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main {
+      margin: 100px auto 20px; /* Center the main div and add space at the top */
+      max-width: 600px; /* Limit the width for better readability */
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      text-align: center;
+      background-color: white;
+      border-radius: 10px; /* Rounded corners */
+    }
+
+    h1.display-4 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    p.lead {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px; /* Rounded corners for the button */
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+      color: white;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+
+    hr.my-4 {
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <h1 class="display-4">Hello {{ request.user.first_name }}</h1>
+    <p class="lead">Your account is not approved yet.<br><br>Our team is checking your profile.<br><br>Soon your account will be confirmed!</p>
+    <hr class="my-4">
+    <p>Check back later.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/logout" role="button">Logout for Now</a>
+    </p>
+  </div>
+</body>
+</html>

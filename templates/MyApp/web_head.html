@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang= "en">
+    <!--  page mas2oula aala el header  -->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device=width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="{%  static 'css/homestyle.css' %}"/>  
+        <title>Home · Ask A Doctor</title>
+             
+    </head>
+    <body>
+            <div class="container" style="font-family: serif" >
+                <div class="heading">
+                    <a href="{% url 'MyApp:home' %}"><img href="{% url 'MyApp:home' %}" src="{% static 'images/logo.png' %}" alt="No image found"></a>
+                    <a href="{% url 'MyApp:home' %}"><h1 >Ask a Doctor</h1></a>
+                </div>
+            </div>
+    </body>
+    <style>
+    
+        body {
+            background-color: rgb(255, 255, 255);
+            padding: 0px;
+            margin-top: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }   
+        .heading img{
+            padding-left: 15px;
+            height: 100px;
+            float:left;
+        }
+        .heading h1{
+            margin-bottom:12px;
+            padding-top: 34px;
+            padding-bottom: 23px;
+            padding-left: 140px;
+            font-family: Arial;
+            color: rgb(64, 65, 68);   
+        }
+    
+    </style>
+</html>

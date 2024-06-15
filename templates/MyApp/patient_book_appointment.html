@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .container {
+            max-width: 100%;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        body {
+            background-color: #f7f9fc;
+            padding-top: 70px; /* Height of the navbar */
+        }
+
+        .register-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            margin-left: 250px; /* Width of the sidebar */
+        }
+
+        .form {
+            width: 70%;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 40px 50px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            margin-left: 150px;
+        }
+
+        .form-content h2 {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .btnSubmit {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btnSubmit:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'MyApp/patient_base.html' %}
+
+    {% if message %}
+    <script>
+        alert("{{ message }}");
+    </script>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div style="width:100%;" class="container register-form">
+            <div class="form">
+                <div class="form-content">
+                    <h2>Book Appointment</h2>
+                    <div class="form-group">
+                        <label for="doctor">Doctor</label>
+                        {% render_field appointmentForm.doctorId class="form-control" placeholder="Select Doctor" %}
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentDate">Appointment Date</label>
+                        {% render_field appointmentForm.appointmentDate class="form-control" placeholder="Select Date" %}
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Appointment Time</label>
+                        {% render_field appointmentForm.time class="form-control" placeholder="Select Time" %}
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description/Extra Notes</label>
+                        {% render_field appointmentForm.description class="form-control" placeholder="Enter Description" %}
+                    </div>
+                    <button type="submit" class="btnSubmit">Book</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <title>Admin · Patient Record</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-left: 25%;
+            margin-right: 8%;
+            margin-top: 7%;
+        }
+
+        .panel {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .panel-heading {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1.5em;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table th, .table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 12px;
+        }
+
+        .table th {
+            background-color: #f7f7f7;
+        }
+
+        .table td {
+            background-color: #fff;
+        }
+
+        .table td a {
+            margin: 0 5px;
+        }
+
+        .btn-xs {
+            padding: 5px 10px;
+        }
+
+        .glyphicon {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    {% include 'MyApp/admin_base.html' %}
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Patient Records
+            </div>
+            <table class="table table-hover" id="dev-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in patients %}
+                    <tr>
+                        <td>{{ p.Patient_First_Name }} {{ p.Patient_Last_Name }}</td>
+                        <td>{{ p.contact }}</td>
+                        <td>{{ p.address }}</td>
+                        <td>
+                            <a class="btn btn-primary btn-xs" href="{% url 'MyApp:update_patient' p.id %}">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger btn-xs" href="{% url 'MyApp:delete_patient' p.id %}">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Appointment Summary</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin-top: 100px;
+            
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-left: 30%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            margin-left: 30px;  
+            text-align:center;
+            margin-top: 120px;
+            padding:20px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-right: 60px
+            margin-left: 60px;
+            padding:20px;
+        }
+
+        .column {
+            flex-basis: calc(50% - 20px);
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .column:hover {
+            transform: translateY(-5px);
+        }
+
+        .card {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .doctor-card {
+            background-color: #ff9999;
+        }
+
+        .contact-card {
+            background-color: #ffcc66;
+        }
+
+        .symptoms-card {
+            background-color: #99ff99;
+        }
+
+        .date-card {
+            background-color: #9999ff;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Appointment Summary</h1>
+        <div class="row">
+            <div class="column">
+                <div class="card doctor-card">
+                    <h3>Doctor Name</h3>
+                    <p>{{ doctorName }}</p>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card contact-card">
+                    <h3>Doctor Contact</h3>
+                    <p>{{ doctorcontact }}</p>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card symptoms-card">
+                    <h3>Symptoms</h3>
+                    <p>{{ symptoms }}</p>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="card date-card">
+                    <h3>Date</h3>
+                    <p>{{ admitDate }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
